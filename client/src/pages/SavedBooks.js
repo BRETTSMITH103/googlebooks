@@ -1,16 +1,13 @@
 import React, { useContext } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
-// import context for global state
 import SavedBookContext from '../utils/SavedBookContext';
 
-// import getSavedBooks and deleteBook from API file
 import * as API from '../utils/API';
 
 function SavedBooks() {
   const { books: savedBooks, getSavedBooks } = useContext(SavedBookContext);
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = (mongoId) => {
     API.deleteBook(mongoId)
       .then(() => getSavedBooks())

@@ -1,10 +1,23 @@
+// const mongoose = require('mongoose');
+
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: true,
+// });
+
+// module.exports = mongoose.connection;
+
+
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/googlebooks', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: true,
-});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:googlebooks',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true
+  });
 
 module.exports = mongoose.connection;

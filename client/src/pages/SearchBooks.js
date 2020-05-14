@@ -5,17 +5,15 @@ import SavedBookContext from '../utils/SavedBookContext';
 import { saveBook, searchGoogleBooks } from '../utils/API';
 
 function SearchBooks() {
-  // create state for holding returned google api data
+
   const [searchedBooks, setSearchedBooks] = useState([]);
-  // create state for holding our search field data
+
   const [searchInput, setSearchInput] = useState('');
 
-  // get saved books from app.js on load
   const { books: savedBooks, getSavedBooks } = useContext(SavedBookContext);
 
   console.log(savedBooks);
 
-  // create method to search for books and set state on form submit
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -40,12 +38,11 @@ function SearchBooks() {
       .catch((err) => console.log(err));
   };
 
-  // create function to handle saving a book to our database
   const handleSaveBook = (bookId) => {
-    // find the book in `searchedBooks` state by the matching id
+
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
-    // send the books data to our api
+
     saveBook(bookToSave)
       .then(() => getSavedBooks())
       .catch((err) => console.log(err));
